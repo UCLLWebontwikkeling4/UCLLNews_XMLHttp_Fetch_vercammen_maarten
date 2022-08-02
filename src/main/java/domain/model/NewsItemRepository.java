@@ -9,9 +9,11 @@ public class NewsItemRepository {
 
     public NewsItemRepository() {
         NewsItem newsItem = new NewsItem("ISP invullen", "Jef Jansens", "ISP invullen pls");
-        NewsItem newsItem2 = new NewsItem("hallo", "Dirk Jansens", "dit is een test");
-        Comment comment = new Comment("Kato", "Hallo");
+        NewsItem newsItem2 = new NewsItem("Besparingen", "Dirk Jansens", "We gaan 10% minder code moeten schrijven door de besparingen");
+        Comment comment = new Comment("Maarten", "dit is een goed idee");
+        Comment comment2 = new Comment("Dirk", "hopelijk hou ik mijn baan");
         newsItem2.addComment(comment);
+        newsItem2.addComment(comment2);
         add(newsItem);
         add(newsItem2);
     }
@@ -25,12 +27,7 @@ public class NewsItemRepository {
     }
 
     public ArrayList<Comment> getCommentsForNewsItem(int id){
-        for (NewsItem newsItem: newsItems) {
-            if(newsItem.getId() == id){
-                return newsItem.getComments();
-            }
-        }
-        return new ArrayList<>();
+        return getNewsitemById(id).getComments();
     }
 
     public NewsItem getNewsitemById(int id) {

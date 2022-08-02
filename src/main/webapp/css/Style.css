@@ -62,26 +62,29 @@ h1{
     border-bottom: #2c2c2d solid 2px;
 }
 
-#news{
+#news {
     grid-area: news;
 }
 
-#add{
+#add {
     grid-area: add;
 }
 
-.news-item{
+.news-div {
     text-align: center;
     width: 60%;
     margin-left: auto;
     margin-right: auto;
-    border: #2c2c2d dashed 1px;
-    border-radius: 1rem;
-    position: relative;
     margin-top: 2rem;
 }
 
-.news-item h2{
+.news-item {
+    border: #2c2c2d dashed 1px;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.news-item h2 {
     border-bottom: #2c2c2d dashed 1px;
     padding: 0.5rem;
 }
@@ -90,16 +93,18 @@ h1{
     margin: 1rem 1rem 3rem;
 }
 
-.news-item small{
+small {
     position: absolute;
     left: 0.6rem;
     bottom: 0.4rem;
+    margin: 0.5rem;
 }
 
-.news-item i {
+i {
     position: absolute;
     right: 0.6rem;
     bottom: 0.4rem;
+    margin: 0.5rem;
 }
 
 .add-post {
@@ -154,4 +159,23 @@ input[type=button]:hover {
     padding: 15px 10px 15px 50px;
     background-repeat: no-repeat;
     background-position: 10px center;
+}
+
+.comment-section {
+    margin-top: 0.2rem;
+    width: 60%;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.comment {
+    margin-top: 0.2rem;
+    padding: 1rem;
+    position: relative;
+    border: #2c2c2d dashed 1px;
+    border-radius: 1rem;
+}
+
+.comment p {
+    margin: 1rem 1rem 2rem;
 }

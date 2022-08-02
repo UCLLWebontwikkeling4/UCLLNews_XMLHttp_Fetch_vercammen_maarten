@@ -25,7 +25,10 @@ function showNewsItems() {
 
 function showSingleNewsItem(item) {
     let div = document.createElement("div")
-    div.className = "news-item"
+    div.className = "news-div"
+
+    let newsItem = document.createElement("div")
+    newsItem.className = "news-item"
 
     let header = document.createElement("h2")
     header.innerText = item.title
@@ -39,8 +42,43 @@ function showSingleNewsItem(item) {
     let author = document.createElement("i")
     author.innerText = item.author
 
-    div.append(header, content, date, author)
+    let comments = document.createElement("div")
+    comments.className = "comment-section"
+    getCommentsForNewsItem(item.id, comments)
+
+    newsItem.append(header, content, date, author)
+    div.append(newsItem, comments)
 
     return div
+}
 
+function getCommentsForNewsItem(id, div) {
+    fetch("Controller?command=Comments&id=" + id)
+        .then((res) => res.json())
+        .then(comments => showCommentsForNewsItem(comments, div))
+}
+
+function showCommentsForNewsItem(comments, div) {
+    for (let i = 0; i < comments.length; i++) {
+        let commentHTML = showSingleComment(comments[i]);
+        div.append(commentHTML)
+    }
+}
+
+function showSingleComment(comment) {
+    let div = document.createElement("div")
+    div.className = "comment"
+
+    let text = document.createElement("p")
+    text.innerText = comment.text
+
+    let author = document.createElement("i")
+    author.innerText = comment.author
+
+    let date = document.createElement("small")
+    date.innerText = comment.date.dayOfMonth + "-" + comment.date.month + "-" + comment.date.year
+
+    div.append(text, author, date)
+
+    return div
 }
