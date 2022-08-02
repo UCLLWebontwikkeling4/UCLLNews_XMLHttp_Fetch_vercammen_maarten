@@ -9,8 +9,15 @@
 </head>
 <body>
 <nav>
-    <a href="index.jsp">Index</a>
-    <a href="CommentByAuthor.jsp">Find Comments By Author</a>
+    <span>UCLL News</span>
+    <ul>
+        <li>
+            <a href="index.jsp">Index</a>
+        </li>
+        <li>
+            <a href="CommentByAuthor.jsp">Find</a>
+        </li>
+    </ul>
 </nav>
 <h1>UCLL news</h1>
 <div class="searchAuthor">
@@ -19,21 +26,21 @@
         <input type="text" id="author" name="author" value=""/>
     </p>
     <p class="inputcontainer">
-        <input type="button" id="searchauthorcommentbutton" value="Search"/>
+        <input type="button" id="searchAuthorCommentButton" value="Search"/>
     </p>
-    <div>
-        <table id="table">
-            <thead>
-            <tr>
-                <th>Message</th>
-                <th>Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
+</div>
 
+<div>
+    <table id="table">
+        <thead>
+        <tr>
+            <th>Message</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="js/AuthorComments.js"></script>

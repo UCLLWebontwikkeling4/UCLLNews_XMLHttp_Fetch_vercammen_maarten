@@ -179,3 +179,51 @@ input[type=button]:hover, button:hover {
 .comment p {
     margin: 1rem 1rem 2rem;
 }
+
+.searchAuthor {
+    grid-area: add;
+    margin: 2rem;
+}
+
+table {
+    grid-area: news;
+    margin: 2rem;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 80%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+thead th {
+    color: #ffffff;
+    background: #4FC3A1;
+}
+
+thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+
+th, td {
+    text-align: center;
+    padding: 1rem;
+    font-size: large;
+}
+
+th {
+    height: 2rem;
+    background-color: #04AA6D;
+    color: white;
+}
+
+td {
+    border-right: 1px solid #f8f8f8;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
