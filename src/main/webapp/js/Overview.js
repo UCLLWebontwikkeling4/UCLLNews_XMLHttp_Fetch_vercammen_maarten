@@ -13,19 +13,30 @@ function showNewsItems() {
         if (getNewsItemsRequest.status === 200) {
             let newsItems = JSON.parse(getNewsItemsRequest.responseText)
             let newsItemsDiv = document.getElementById("news")
-            newsItemsDiv.innerHTML = ""
             for (let i = 0; i < newsItems.length; i++) {
-                let div = showSingleNewsItem(newsItems[i])
-                newsItemsDiv.appendChild(div)
+                let newsItemHTML = document.getElementById("news-" + newsItems[i].id)
+                if (newsItemHTML) {
+                    updateNewsItem(newsItems[i], newsItemHTML)
+                } else {
+                    let div = createSingleNewsItem(newsItems[i])
+                    newsItemsDiv.appendChild(div)
+                }
+
             }
             setTimeout(getNewsItems, 5000)
         }
     }
 }
 
-function showSingleNewsItem(item) {
+function updateNewsItem(item, html) {
+    let comments = html.getElementsByClassName("comment-section")[0]
+    getCommentsForNewsItem(item.id, comments)
+}
+
+function createSingleNewsItem(item) {
     let div = document.createElement("div")
     div.className = "news-div"
+    div.id = "news-" + item.id
 
     let newsItem = document.createElement("div")
     newsItem.className = "news-item"
@@ -60,14 +71,18 @@ function getCommentsForNewsItem(id, div) {
 
 function showCommentsForNewsItem(comments, div) {
     for (let i = 0; i < comments.length; i++) {
-        let commentHTML = showSingleComment(comments[i]);
-        div.append(commentHTML)
+        let comment = div.querySelector("#comment-" + comments[i].id)
+        if (!comment) {
+            let commentHTML = showSingleComment(comments[i]);
+            div.append(commentHTML)
+        }
     }
 }
 
 function showSingleComment(comment) {
     let div = document.createElement("div")
     div.className = "comment"
+    div.id = "comment-" + comment.id
 
     let text = document.createElement("p")
     text.innerText = comment.text
