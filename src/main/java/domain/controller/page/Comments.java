@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class Comments extends RequestHandler {
         int newsItemId = Integer.parseInt(request.getParameter("id"));
         List<Comment> comments = getRepository().getCommentsForNewsItem(newsItemId);
         comments.sort(Comparator.comparing(Comment::getDate));
+        Collections.reverse(comments);
         int size = Math.min(comments.size(), 5);
         comments = comments.subList(0, size);
         return commentsToJSON(comments);
