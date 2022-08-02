@@ -33,10 +33,11 @@
         <textarea name="text" id="text"></textarea>
     </p>
     <p class="input-container">
-        <input type="button" id="add-news-button" value="Add news"/>
+        <input type="button" id="add-news-button" value="Submit"/>
     </p>
 
 </div>
 <script type="text/javascript" src="js/Overview.js"></script>
+<script type="text/javascript" src="js/AddNewsItem.js"></script>
 </body>
 </html>

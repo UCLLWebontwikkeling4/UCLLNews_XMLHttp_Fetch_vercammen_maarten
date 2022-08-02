@@ -9,15 +9,16 @@ function getNewsItems() {
 }
 
 function showNewsItems() {
-    if(getNewsItemsRequest.readyState == 4){
-        if(getNewsItemsRequest.status = 200){
+    if (getNewsItemsRequest.readyState === 4) {
+        if (getNewsItemsRequest.status === 200) {
             let newsItems = JSON.parse(getNewsItemsRequest.responseText)
             let newsItemsDiv = document.getElementById("news")
-            console.log(newsItems)
-            for (let i=0; i < newsItems.length; i++){
+            newsItemsDiv.innerHTML = ""
+            for (let i = 0; i < newsItems.length; i++) {
                 let div = showSingleNewsItem(newsItems[i])
                 newsItemsDiv.appendChild(div)
             }
+            setTimeout(getNewsItems, 5000)
         }
     }
 }
